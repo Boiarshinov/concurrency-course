@@ -77,7 +77,7 @@ public class PriceAggregatorTests {
         long end = System.currentTimeMillis();
 
         assertEquals(expectedMin, min);
-        assertTrue((end - start) < SLA);
+        assertTrue((end - start) < SLA, "Execution time: " + (end - start));
     }
 
     @Test

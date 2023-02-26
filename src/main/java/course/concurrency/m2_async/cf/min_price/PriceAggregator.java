@@ -1,9 +1,16 @@
 package course.concurrency.m2_async.cf.min_price;
 
-import java.util.Collection;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class PriceAggregator {
+
+    private static final long SHOP_REQUEST_TIMEOUT = 2950L; //Should be a bit less than 3s to pass tests
 
     private PriceRetriever priceRetriever = new PriceRetriever();
 
@@ -18,7 +25,18 @@ public class PriceAggregator {
     }
 
     public double getMinPrice(long itemId) {
-        // здесь будет ваш код
-        return 0;
+        List<CompletableFuture<Double>> futures = shopIds.stream()
+                .map(shopId -> CompletableFuture.supplyAsync(() -> priceRetriever.getPrice(itemId, shopId))
+                        .orTimeout(SHOP_REQUEST_TIMEOUT, TimeUnit.MILLISECONDS))
+                .collect(Collectors.toList());
+        CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]))
+                .exceptionally(ignored -> null) //it is OK when some futures fall with TimeoutException
+                .join();
+
+        return futures.stream()
+                .filter(future -> future.isDone() && !future.isCompletedExceptionally())
+                .mapToDouble(CompletableFuture::join)
+                .min()
+                .orElse(Double.NaN);
     }
 }
