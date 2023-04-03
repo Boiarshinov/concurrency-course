@@ -20,7 +20,7 @@ public class AuctionOptimistic implements Auction {
             if (bid.getPrice() <= expected.getPrice()) {
                 return false;
             }
-        } while (bidRef.compareAndSet(expected, bid));
+        } while (!bidRef.compareAndSet(expected, bid));
         notifier.sendOutdatedMessage(expected);
         return true;
     }
