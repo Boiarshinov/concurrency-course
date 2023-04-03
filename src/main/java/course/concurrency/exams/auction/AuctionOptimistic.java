@@ -10,8 +10,7 @@ public class AuctionOptimistic implements Auction {
         this.notifier = notifier;
     }
 
-    private static final Bid BID_DUMMY = new Bid(0, 0, 0);
-    private final AtomicReference<Bid> bidRef = new AtomicReference<>(BID_DUMMY);
+    private final AtomicReference<Bid> bidRef = new AtomicReference<>(Bid.DUMMY);
 
     public boolean propose(Bid bid) {
         Bid expected;

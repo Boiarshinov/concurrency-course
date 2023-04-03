@@ -11,9 +11,7 @@ public class AuctionPessimistic implements Auction {
         this.notifier = notifier;
     }
 
-    private static final Bid BID_DUMMY = new Bid(0, 0, 0);
-
-    private volatile Bid latestBid = BID_DUMMY;
+    private volatile Bid latestBid = Bid.DUMMY;
 
     private final Lock bidLock = new ReentrantLock();
 

@@ -1,6 +1,8 @@
 package course.concurrency.exams.auction;
 
 public class Bid {
+    public static final Bid DUMMY = new Bid(0, 0, 0);
+
     private final long id; // ID заявки
     private final long participantId; // ID участника
     private final long price; // предложенная цена
