@@ -1,4 +1,5 @@
 package course.concurrency.m3_shared.immutable;
 
-public class PaymentInfo {
+//should be immutable
+public final class PaymentInfo {
 }

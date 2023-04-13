@@ -1,66 +1,99 @@
 package course.concurrency.m3_shared.immutable;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import static course.concurrency.m3_shared.immutable.Order.Status.NEW;
-
-public class Order {
+public final class Order {
 
     public enum Status { NEW, IN_PROGRESS, DELIVERED }
 
-    private Long id;
-    private List<Item> items;
-    private PaymentInfo paymentInfo;
-    private boolean isPacked;
-    private Status status;
+    private final long id;
+    private final List<Item> items;
+    private final PaymentInfo paymentInfo;
+    private final boolean isPacked;
+    private final Status status;
 
-    public Order(List<Item> items) {
-        this.items = items;
-        this.status = NEW;
+    private Order(long id, List<Item> items, PaymentInfo paymentInfo, boolean isPacked, Status status) {
+        this.id = id;
+        this.items = items != null
+                ? new ArrayList<>(items)
+                : Collections.emptyList();
+        this.paymentInfo = paymentInfo;
+        this.isPacked = isPacked;
+        this.status = status;
     }
 
-    public synchronized boolean checkStatus() {
-        if (items != null && !items.isEmpty() && paymentInfo != null && isPacked) {
-            return true;
+    public static Order create(long id, List<Item> items) {
+        return new Order(id, items, null, false, Status.NEW);
+    }
+
+    public boolean isReadyToDeliver() {
+        return !items.isEmpty() && paymentInfo != null && isPacked;
+    }
+
+    public Order payed(PaymentInfo paymentInfo) {
+        checkNotDelivered();
+        return new Order(
+                this.id,
+                this.items,
+                paymentInfo,
+                this.isPacked,
+                Status.IN_PROGRESS);
+    }
+
+    public Order packed() {
+        checkNotDelivered();
+        return new Order(
+                this.id,
+                this.items,
+                this.paymentInfo,
+                true,
+                Status.IN_PROGRESS);
+    }
+
+    public Order delivered() {
+        if (!isReadyToDeliver()) {
+            throw new IllegalStateException("Order should not be delivered when it's not payed or not packed");
         }
-        return false;
+        return new Order(
+                this.id,
+                this.items,
+                this.paymentInfo,
+                this.isPacked,
+                Status.DELIVERED);
     }
+
+    public boolean isDelivered() {
+        return status == Status.DELIVERED;
+    }
+
+    private void checkNotDelivered() {
+        if (status == Status.DELIVERED) {
+            throw new IllegalStateException("Order already was delivered");
+        }
+    }
+
+
+    //getters
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public List<Item> getItems() {
-        return items;
+        return new ArrayList<>(items);
     }
 
     public PaymentInfo getPaymentInfo() {
         return paymentInfo;
     }
 
-    public void setPaymentInfo(PaymentInfo paymentInfo) {
-        this.paymentInfo = paymentInfo;
-        this.status = Status.IN_PROGRESS;
-    }
-
     public boolean isPacked() {
         return isPacked;
     }
 
-    public void setPacked(boolean packed) {
-        isPacked = packed;
-        this.status = Status.IN_PROGRESS;
-    }
-
     public Status getStatus() {
         return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
     }
 }
