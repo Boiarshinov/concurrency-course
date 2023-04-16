@@ -10,7 +10,7 @@ public class SkipOnOverflowExecutor {
 
     ExecutorService executor = new ThreadPoolExecutor(8, 8,
             0, TimeUnit.MILLISECONDS,
-            new SynchronousQueue<>(), ((r, tp) -> {}));
+            new SynchronousQueue<>(), new ThreadPoolExecutor.DiscardPolicy());
 
     @Test
     void test() throws InterruptedException {
