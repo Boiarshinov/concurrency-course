@@ -3,6 +3,7 @@ package course.concurrency.exams.refactoring;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
+import java.util.function.Function;
 
 
 public class MountTableRefresherService {
@@ -21,6 +22,8 @@ public class MountTableRefresherService {
      * Removes expired RouterClient from routerClientsCache.
      */
     private ScheduledExecutorService clientCacheCleanerScheduler;
+
+    private Function<String, Others.MountTableManager> managerFactory = Others.MountTableManager::new;
 
     public void serviceInit()  {
         long routerClientMaxLiveTime = 15L;
@@ -80,8 +83,7 @@ public class MountTableRefresherService {
                  */
                 refreshThreads.add(getLocalRefresher(adminAddress));
             } else {
-                refreshThreads.add(new MountTableRefresherThread(
-                            new Others.MountTableManager(adminAddress), adminAddress));
+                refreshThreads.add(new MountTableRefresherThread(managerFactory.apply(adminAddress), adminAddress));
             }
         }
         if (!refreshThreads.isEmpty()) {
@@ -90,7 +92,7 @@ public class MountTableRefresherService {
     }
 
     protected MountTableRefresherThread getLocalRefresher(String adminAddress) {
-        return new MountTableRefresherThread(new Others.MountTableManager("local"), adminAddress);
+        return new MountTableRefresherThread(managerFactory.apply("local"), adminAddress);
     }
 
     private void removeFromCache(String adminAddress) {
@@ -154,5 +156,9 @@ public class MountTableRefresherService {
 
     public void setRouterStore(Others.RouterStore routerStore) {
         this.routerStore = routerStore;
+    }
+
+    void setManagerFactory(Function<String, Others.MountTableManager> managerFactory) {
+        this.managerFactory = managerFactory;
     }
 }
