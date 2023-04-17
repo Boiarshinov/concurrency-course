@@ -109,8 +109,10 @@ public class MountTableRefresherServiceTests {
                 () -> {
                     try {
                         Thread.sleep(CACHE_UPDATE_TIMEOUT + 100);
-                    } catch (InterruptedException ignored) {}
-                    return true;
+                        return true;
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 });
         when(manager.refresh()).thenAnswer(answerSupplier.getAnswer());
 
