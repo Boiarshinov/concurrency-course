@@ -8,7 +8,7 @@ public class MyBlockingQueue<E> implements IBlockingQueue<E> {
     private final Object[] arr;
     private int head = 0;
     private int tail = 0;
-    private int count = 0;
+    private volatile int count = 0;
     private final ReentrantLock lock = new ReentrantLock();
     private final Condition enqueueCondition = lock.newCondition();
     private final Condition dequeueCondition = lock.newCondition();
@@ -50,9 +50,15 @@ public class MyBlockingQueue<E> implements IBlockingQueue<E> {
             lock.unlock();
         }
     }
+
+    @Override
+    public int size() {
+        return count;
+    }
 }
 
 interface IBlockingQueue<E> {
     void enqueue(E e);
     E dequeue();
+    int size();
 }
