@@ -83,16 +83,18 @@ public class MountTableRefresherService {
                 })
                 .collect(Collectors.toList());
 
-        CompletableFuture.allOf(refreshingTasks.toArray(new CompletableFuture[0])).thenAccept(_void ->{
-            List<Result> results = refreshingTasks.stream()
-                    .map(CompletableFuture::join)
-                    .peek(result -> { if (!result.isSucceeded()) removeFromCache(result.address); } )
-                    .collect(Collectors.toList());
-
-            if (results.stream().anyMatch(Result::isExpired)) log("Not all router admins updated their cache");
-
-            logResults(results);
-        }).join();
+        CompletableFuture.allOf(refreshingTasks.toArray(new CompletableFuture[0])).thenAccept(_void -> {
+                    List<Result> results = refreshingTasks.stream()
+                            .map(CompletableFuture::join)
+                            .collect(Collectors.toList());
+                    removeOutdatedFromCache(results);
+                    logResults(results);
+                })
+                .exceptionally(ex -> {
+                    log("Mount table cache refresher was interrupted.");
+                    return null;
+                })
+                .join();
     }
 
     private List<String> getAddresses() {
@@ -103,6 +105,10 @@ public class MountTableRefresherService {
     }
 
     private void logResults(List<Result> results) {
+        if (results.stream().anyMatch(Result::isExpired)) {
+            log("Not all router admins updated their cache");
+        }
+
         Map<Boolean, List<Result>> resultsBySuccess = results.stream()
                 .collect(Collectors.groupingBy(result -> result.isSucceeded()));
 
@@ -138,6 +144,12 @@ public class MountTableRefresherService {
         public boolean isExpired() {
             return status == Status.EXPIRED;
         }
+    }
+
+    private void removeOutdatedFromCache(List<Result> results) {
+        results.stream()
+                .filter(result -> !result.isSucceeded())
+                .forEach(result -> removeFromCache(result.address));
     }
 
     private void removeFromCache(String adminAddress) {
