@@ -27,6 +27,8 @@ public class MountTableRefresherService {
 
     private Function<String, Others.MountTableManager> managerFactory = Others.MountTableManager::new;
 
+    private final ExecutorService executor = Executors.newCachedThreadPool();
+
     public void serviceInit()  {
         long routerClientMaxLiveTime = 15L;
         this.cacheUpdateTimeout = 10L;
@@ -70,27 +72,28 @@ public class MountTableRefresherService {
      */
     public void refresh()  {
         List<String> addresses = getAddresses();
-        ExecutorService executor = prepareExecutor(addresses.size());
 
-        Map<String, Future<Boolean>> futureByAddress = addresses.stream()
-                .collect(Collectors.toMap(a -> a,
-                        a -> {
-                            String address = isLocalAdmin(a) ? "local" : a;
-                            Others.MountTableManager manager = managerFactory.apply(address);
-                            return executor.submit(mapToCallable(manager, address));
-                        }));
-
-        awaitCompletion(executor);
-
-        List<Result> results = futureByAddress.entrySet().stream()
-                .map(e -> new Result(e.getKey(), e.getValue()))
+        List<CompletableFuture<Result>> refreshingTasks = addresses.stream()
+                .map(a -> {
+                    String address = isLocalAdmin(a) ? "local" : a;
+                    Others.MountTableManager manager = managerFactory.apply(address);
+                    return CompletableFuture.supplyAsync(() -> new Result(a, manager.refresh()), executor)
+                            .completeOnTimeout(new Result(a, false), cacheUpdateTimeout, TimeUnit.MILLISECONDS)
+                            .exceptionally(e -> new Result(a, false));
+                })
                 .collect(Collectors.toList());
 
-        results.stream()
-                .filter(result -> !result.success)
-                .forEach(result -> removeFromCache(result.address));
+        CompletableFuture.allOf(refreshingTasks.toArray(new CompletableFuture[0])).thenAccept(_void ->{
+            List<Result> results = refreshingTasks.stream()
+                    .map(CompletableFuture::join)
+                    .collect(Collectors.toList());
 
-        logResults(results);
+            results.stream()
+                    .filter(result -> !result.success)
+                    .forEach(result -> removeFromCache(result.address));
+
+            logResults(results);
+        }).join();
     }
 
     private List<String> getAddresses() {
@@ -98,25 +101,6 @@ public class MountTableRefresherService {
                 .map(Others.RouterState::getAdminAddress)
                 .filter(StringUtils::hasText)
                 .collect(Collectors.toList());
-    }
-
-    private ExecutorService prepareExecutor(int addressesCount) {
-        return new ThreadPoolExecutor(addressesCount, addressesCount,
-                0, TimeUnit.MILLISECONDS,
-                new SynchronousQueue<>());
-    }
-
-    private void awaitCompletion(ExecutorService executor) {
-        try {
-            executor.shutdown();
-            boolean allReqCompleted = executor.awaitTermination(cacheUpdateTimeout, TimeUnit.MILLISECONDS);
-            if (!allReqCompleted) {
-                executor.shutdownNow();
-                log("Not all router admins updated their cache");
-            }
-        } catch (InterruptedException e) {
-            log("Mount table cache refresher was interrupted.");
-        }
     }
 
     private void logResults(List<Result> results) {
@@ -133,20 +117,10 @@ public class MountTableRefresherService {
         final String address;
         final boolean success;
 
-        public Result(String address, Future<Boolean> future) {
+        public Result(String address, boolean success) {
             this.address = address;
-            boolean executionResult;
-            try {
-                executionResult = future.get();
-            } catch (CancellationException | InterruptedException | ExecutionException e) {
-                executionResult = false;
-            }
-            this.success = executionResult;
+            this.success = success;
         }
-    }
-
-    private Callable<Boolean> mapToCallable(Others.MountTableManager manager, String adminAddress) {
-        return () -> manager.refresh();
     }
 
     private void removeFromCache(String adminAddress) {
