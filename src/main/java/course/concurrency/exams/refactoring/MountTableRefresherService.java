@@ -77,20 +77,19 @@ public class MountTableRefresherService {
                 .map(a -> {
                     String address = isLocalAdmin(a) ? "local" : a;
                     Others.MountTableManager manager = managerFactory.apply(address);
-                    return CompletableFuture.supplyAsync(() -> new Result(a, manager.refresh()), executor)
-                            .completeOnTimeout(new Result(a, false), cacheUpdateTimeout, TimeUnit.MILLISECONDS)
-                            .exceptionally(e -> new Result(a, false));
+                    return CompletableFuture.supplyAsync(() -> Result.complete(a, manager.refresh()), executor)
+                            .completeOnTimeout(Result.expired(a), cacheUpdateTimeout, TimeUnit.MILLISECONDS)
+                            .exceptionally(e -> Result.complete(a, false));
                 })
                 .collect(Collectors.toList());
 
         CompletableFuture.allOf(refreshingTasks.toArray(new CompletableFuture[0])).thenAccept(_void ->{
             List<Result> results = refreshingTasks.stream()
                     .map(CompletableFuture::join)
+                    .peek(result -> { if (!result.isSucceeded()) removeFromCache(result.address); } )
                     .collect(Collectors.toList());
 
-            results.stream()
-                    .filter(result -> !result.success)
-                    .forEach(result -> removeFromCache(result.address));
+            if (results.stream().anyMatch(Result::isExpired)) log("Not all router admins updated their cache");
 
             logResults(results);
         }).join();
@@ -105,7 +104,7 @@ public class MountTableRefresherService {
 
     private void logResults(List<Result> results) {
         Map<Boolean, List<Result>> resultsBySuccess = results.stream()
-                .collect(Collectors.groupingBy(result -> result.success));
+                .collect(Collectors.groupingBy(result -> result.isSucceeded()));
 
         log(String.format(
                 "Mount table entries cache refresh successCount=%d,failureCount=%d",
@@ -114,12 +113,30 @@ public class MountTableRefresherService {
     }
 
     private static class Result {
-        final String address;
-        final boolean success;
+        private enum Status { SUCCEEDED, FAILED, EXPIRED }
 
-        public Result(String address, boolean success) {
+        final String address;
+        private final Status status;
+
+        public static Result complete(String address, boolean success) {
+            return new Result(address, success ? Status.SUCCEEDED : Status.FAILED);
+        }
+
+        public static Result expired(String address) {
+            return new Result(address, Status.EXPIRED);
+        }
+
+        private Result(String address, Status status) {
             this.address = address;
-            this.success = success;
+            this.status = status;
+        }
+
+        public boolean isSucceeded() {
+            return status == Status.SUCCEEDED;
+        }
+
+        public boolean isExpired() {
+            return status == Status.EXPIRED;
         }
     }
 
