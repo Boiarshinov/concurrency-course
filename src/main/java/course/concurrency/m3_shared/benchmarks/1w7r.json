@@ -1,0 +1,1473 @@
+[
+  {
+    "jmhVersion" : "1.35",
+    "benchmark" : "course.concurrency.m3_shared.benchmarks.CounterBenchmarks.AtomicLong",
+    "mode" : "thrpt",
+    "threads" : 8,
+    "forks" : 1,
+    "jvm" : "/Users/boiarshinov/Library/Java/JavaVirtualMachines/liberica-11.0.16/bin/java",
+    "jvmArgs" : [
+      "-javaagent:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=62989:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/bin",
+      "-Dfile.encoding=UTF-8"
+    ],
+    "jdkVersion" : "11.0.16",
+    "vmName" : "OpenJDK 64-Bit Server VM",
+    "vmVersion" : "11.0.16+8-LTS",
+    "warmupIterations" : 5,
+    "warmupTime" : "10 s",
+    "warmupBatchSize" : 1,
+    "measurementIterations" : 5,
+    "measurementTime" : "10 s",
+    "measurementBatchSize" : 1,
+    "primaryMetric" : {
+      "score" : 870469.2546324743,
+      "scoreError" : 61216.13663423426,
+      "scoreConfidence" : [
+        809253.11799824,
+        931685.3912667085
+      ],
+      "scorePercentiles" : {
+        "0.0" : 848692.8303301424,
+        "50.0" : 870019.8036685167,
+        "90.0" : 893224.7914328757,
+        "95.0" : 893224.7914328757,
+        "99.0" : 893224.7914328757,
+        "99.9" : 893224.7914328757,
+        "99.99" : 893224.7914328757,
+        "99.999" : 893224.7914328757,
+        "99.9999" : 893224.7914328757,
+        "100.0" : 893224.7914328757
+      },
+      "scoreUnit" : "ops/ms",
+      "rawData" : [
+        [
+          867157.2965025473,
+          848692.8303301424,
+          873251.5512282894,
+          870019.8036685167,
+          893224.7914328757
+        ]
+      ]
+    },
+    "secondaryMetrics" : {
+      "readAtomicLong" : {
+        "score" : 856242.1683108124,
+        "scoreError" : 61465.59423663575,
+        "scoreConfidence" : [
+          794776.5740741767,
+          917707.7625474482
+        ],
+        "scorePercentiles" : {
+          "0.0" : 834361.3385446033,
+          "50.0" : 855840.002508108,
+          "90.0" : 879095.3605340691,
+          "95.0" : 879095.3605340691,
+          "99.0" : 879095.3605340691,
+          "99.9" : 879095.3605340691,
+          "99.99" : 879095.3605340691,
+          "99.999" : 879095.3605340691,
+          "99.9999" : 879095.3605340691,
+          "100.0" : 879095.3605340691
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            852971.1064544747,
+            834361.3385446033,
+            858943.0335128065,
+            855840.002508108,
+            879095.3605340691
+          ]
+        ]
+      },
+      "writeAtomicLong" : {
+        "score" : 14227.086321661938,
+        "scoreError" : 338.85965250967087,
+        "scoreConfidence" : [
+          13888.226669152267,
+          14565.94597417161
+        ],
+        "scorePercentiles" : {
+          "0.0" : 14129.430898806502,
+          "50.0" : 14186.190048072602,
+          "90.0" : 14331.491785539052,
+          "95.0" : 14331.491785539052,
+          "99.0" : 14331.491785539052,
+          "99.9" : 14331.491785539052,
+          "99.99" : 14331.491785539052,
+          "99.999" : 14331.491785539052,
+          "99.9999" : 14331.491785539052,
+          "100.0" : 14331.491785539052
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            14186.190048072602,
+            14331.491785539052,
+            14308.517715482858,
+            14179.801160408675,
+            14129.430898806502
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "jmhVersion" : "1.35",
+    "benchmark" : "course.concurrency.m3_shared.benchmarks.CounterBenchmarks.LongAdder",
+    "mode" : "thrpt",
+    "threads" : 8,
+    "forks" : 1,
+    "jvm" : "/Users/boiarshinov/Library/Java/JavaVirtualMachines/liberica-11.0.16/bin/java",
+    "jvmArgs" : [
+      "-javaagent:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=62989:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/bin",
+      "-Dfile.encoding=UTF-8"
+    ],
+    "jdkVersion" : "11.0.16",
+    "vmName" : "OpenJDK 64-Bit Server VM",
+    "vmVersion" : "11.0.16+8-LTS",
+    "warmupIterations" : 5,
+    "warmupTime" : "10 s",
+    "warmupBatchSize" : 1,
+    "measurementIterations" : 5,
+    "measurementTime" : "10 s",
+    "measurementBatchSize" : 1,
+    "primaryMetric" : {
+      "score" : 684074.3142491961,
+      "scoreError" : 12106.534361120042,
+      "scoreConfidence" : [
+        671967.779888076,
+        696180.8486103162
+      ],
+      "scorePercentiles" : {
+        "0.0" : 678569.7998797258,
+        "50.0" : 685502.1687933179,
+        "90.0" : 685986.1761216247,
+        "95.0" : 685986.1761216247,
+        "99.0" : 685986.1761216247,
+        "99.9" : 685986.1761216247,
+        "99.99" : 685986.1761216247,
+        "99.999" : 685986.1761216247,
+        "99.9999" : 685986.1761216247,
+        "100.0" : 685986.1761216247
+      },
+      "scoreUnit" : "ops/ms",
+      "rawData" : [
+        [
+          685502.1687933179,
+          678569.7998797258,
+          685986.1761216247,
+          685932.2206658972,
+          684381.2057854149
+        ]
+      ]
+    },
+    "secondaryMetrics" : {
+      "readLongAdder" : {
+        "score" : 669500.8362922423,
+        "scoreError" : 12176.955113897198,
+        "scoreConfidence" : [
+          657323.8811783451,
+          681677.7914061395
+        ],
+        "scorePercentiles" : {
+          "0.0" : 663989.2557460933,
+          "50.0" : 671002.2412697804,
+          "90.0" : 671506.2895349365,
+          "95.0" : 671506.2895349365,
+          "99.0" : 671506.2895349365,
+          "99.9" : 671506.2895349365,
+          "99.99" : 671506.2895349365,
+          "99.999" : 671506.2895349365,
+          "99.9999" : 671506.2895349365,
+          "100.0" : 671506.2895349365
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            671002.2412697804,
+            663989.2557460933,
+            671506.2895349365,
+            671321.1060412435,
+            669685.2888691575
+          ]
+        ]
+      },
+      "writeLongAdder" : {
+        "score" : 14573.477956953797,
+        "scoreError" : 336.9410208697174,
+        "scoreConfidence" : [
+          14236.53693608408,
+          14910.418977823514
+        ],
+        "scorePercentiles" : {
+          "0.0" : 14479.88658668804,
+          "50.0" : 14580.544133632413,
+          "90.0" : 14695.916916257393,
+          "95.0" : 14695.916916257393,
+          "99.0" : 14695.916916257393,
+          "99.9" : 14695.916916257393,
+          "99.99" : 14695.916916257393,
+          "99.999" : 14695.916916257393,
+          "99.9999" : 14695.916916257393,
+          "100.0" : 14695.916916257393
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            14499.927523537375,
+            14580.544133632413,
+            14479.88658668804,
+            14611.114624653752,
+            14695.916916257393
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "jmhVersion" : "1.35",
+    "benchmark" : "course.concurrency.m3_shared.benchmarks.CounterBenchmarks.ReadWriteLock",
+    "mode" : "thrpt",
+    "threads" : 8,
+    "forks" : 1,
+    "jvm" : "/Users/boiarshinov/Library/Java/JavaVirtualMachines/liberica-11.0.16/bin/java",
+    "jvmArgs" : [
+      "-javaagent:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=62989:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/bin",
+      "-Dfile.encoding=UTF-8"
+    ],
+    "jdkVersion" : "11.0.16",
+    "vmName" : "OpenJDK 64-Bit Server VM",
+    "vmVersion" : "11.0.16+8-LTS",
+    "warmupIterations" : 5,
+    "warmupTime" : "10 s",
+    "warmupBatchSize" : 1,
+    "measurementIterations" : 5,
+    "measurementTime" : "10 s",
+    "measurementBatchSize" : 1,
+    "primaryMetric" : {
+      "score" : 14025.162135391318,
+      "scoreError" : 560.9745476710641,
+      "scoreConfidence" : [
+        13464.187587720255,
+        14586.136683062381
+      ],
+      "scorePercentiles" : {
+        "0.0" : 13776.144498880676,
+        "50.0" : 14064.947872982093,
+        "90.0" : 14140.865662912644,
+        "95.0" : 14140.865662912644,
+        "99.0" : 14140.865662912644,
+        "99.9" : 14140.865662912644,
+        "99.99" : 14140.865662912644,
+        "99.999" : 14140.865662912644,
+        "99.9999" : 14140.865662912644,
+        "100.0" : 14140.865662912644
+      },
+      "scoreUnit" : "ops/ms",
+      "rawData" : [
+        [
+          14114.002044353427,
+          14140.865662912644,
+          14064.947872982093,
+          13776.144498880676,
+          14029.850597827748
+        ]
+      ]
+    },
+    "secondaryMetrics" : {
+      "readReadWriteLock" : {
+        "score" : 7147.396039515527,
+        "scoreError" : 163.9568514329884,
+        "scoreConfidence" : [
+          6983.439188082539,
+          7311.352890948516
+        ],
+        "scorePercentiles" : {
+          "0.0" : 7074.884194267508,
+          "50.0" : 7167.79211831885,
+          "90.0" : 7176.082546612463,
+          "95.0" : 7176.082546612463,
+          "99.0" : 7176.082546612463,
+          "99.9" : 7176.082546612463,
+          "99.99" : 7176.082546612463,
+          "99.999" : 7176.082546612463,
+          "99.9999" : 7176.082546612463,
+          "100.0" : 7176.082546612463
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            7174.61166163311,
+            7167.79211831885,
+            7176.082546612463,
+            7074.884194267508,
+            7143.609676745706
+          ]
+        ]
+      },
+      "writeReadWriteLock" : {
+        "score" : 6877.76609587579,
+        "scoreError" : 404.9148117374633,
+        "scoreConfidence" : [
+          6472.851284138326,
+          7282.680907613253
+        ],
+        "scorePercentiles" : {
+          "0.0" : 6701.260304613168,
+          "50.0" : 6888.865326369629,
+          "90.0" : 6973.0735445937935,
+          "95.0" : 6973.0735445937935,
+          "99.0" : 6973.0735445937935,
+          "99.9" : 6973.0735445937935,
+          "99.99" : 6973.0735445937935,
+          "99.999" : 6973.0735445937935,
+          "99.9999" : 6973.0735445937935,
+          "100.0" : 6973.0735445937935
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            6939.3903827203185,
+            6973.0735445937935,
+            6888.865326369629,
+            6701.260304613168,
+            6886.240921082042
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "jmhVersion" : "1.35",
+    "benchmark" : "course.concurrency.m3_shared.benchmarks.CounterBenchmarks.ReadWriteLock_fair",
+    "mode" : "thrpt",
+    "threads" : 8,
+    "forks" : 1,
+    "jvm" : "/Users/boiarshinov/Library/Java/JavaVirtualMachines/liberica-11.0.16/bin/java",
+    "jvmArgs" : [
+      "-javaagent:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=62989:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/bin",
+      "-Dfile.encoding=UTF-8"
+    ],
+    "jdkVersion" : "11.0.16",
+    "vmName" : "OpenJDK 64-Bit Server VM",
+    "vmVersion" : "11.0.16+8-LTS",
+    "warmupIterations" : 5,
+    "warmupTime" : "10 s",
+    "warmupBatchSize" : 1,
+    "measurementIterations" : 5,
+    "measurementTime" : "10 s",
+    "measurementBatchSize" : 1,
+    "primaryMetric" : {
+      "score" : 544.6040681944231,
+      "scoreError" : 15.301814403785759,
+      "scoreConfidence" : [
+        529.3022537906373,
+        559.9058825982089
+      ],
+      "scorePercentiles" : {
+        "0.0" : 537.7382054189566,
+        "50.0" : 545.7659707433452,
+        "90.0" : 547.8799996865993,
+        "95.0" : 547.8799996865993,
+        "99.0" : 547.8799996865993,
+        "99.9" : 547.8799996865993,
+        "99.99" : 547.8799996865993,
+        "99.999" : 547.8799996865993,
+        "99.9999" : 547.8799996865993,
+        "100.0" : 547.8799996865993
+      },
+      "scoreUnit" : "ops/ms",
+      "rawData" : [
+        [
+          546.5237398018728,
+          547.8799996865993,
+          545.7659707433452,
+          545.1124253213418,
+          537.7382054189566
+        ]
+      ]
+    },
+    "secondaryMetrics" : {
+      "readReadWriteLockFair" : {
+        "score" : 476.52844735522774,
+        "scoreError" : 13.388788785298116,
+        "scoreConfidence" : [
+          463.1396585699296,
+          489.91723614052586
+        ],
+        "scorePercentiles" : {
+          "0.0" : 470.520911500199,
+          "50.0" : 477.54524905758774,
+          "90.0" : 479.3945928370819,
+          "95.0" : 479.3945928370819,
+          "99.0" : 479.3945928370819,
+          "99.9" : 479.3945928370819,
+          "99.99" : 479.3945928370819,
+          "99.999" : 479.3945928370819,
+          "99.9999" : 479.3945928370819,
+          "100.0" : 479.3945928370819
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            478.2082917195483,
+            479.3945928370819,
+            477.54524905758774,
+            476.9731916617217,
+            470.520911500199
+          ]
+        ]
+      },
+      "writeReadWriteLockFair" : {
+        "score" : 68.07562083919541,
+        "scoreError" : 1.913025742823267,
+        "scoreConfidence" : [
+          66.16259509637214,
+          69.98864658201867
+        ],
+        "scorePercentiles" : {
+          "0.0" : 67.2172939187577,
+          "50.0" : 68.22072168575738,
+          "90.0" : 68.48540684951735,
+          "95.0" : 68.48540684951735,
+          "99.0" : 68.48540684951735,
+          "99.9" : 68.48540684951735,
+          "99.99" : 68.48540684951735,
+          "99.999" : 68.48540684951735,
+          "99.9999" : 68.48540684951735,
+          "100.0" : 68.48540684951735
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            68.31544808232451,
+            68.48540684951735,
+            68.22072168575738,
+            68.13923365962012,
+            67.2172939187577
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "jmhVersion" : "1.35",
+    "benchmark" : "course.concurrency.m3_shared.benchmarks.CounterBenchmarks.ReentrantLock",
+    "mode" : "thrpt",
+    "threads" : 8,
+    "forks" : 1,
+    "jvm" : "/Users/boiarshinov/Library/Java/JavaVirtualMachines/liberica-11.0.16/bin/java",
+    "jvmArgs" : [
+      "-javaagent:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=62989:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/bin",
+      "-Dfile.encoding=UTF-8"
+    ],
+    "jdkVersion" : "11.0.16",
+    "vmName" : "OpenJDK 64-Bit Server VM",
+    "vmVersion" : "11.0.16+8-LTS",
+    "warmupIterations" : 5,
+    "warmupTime" : "10 s",
+    "warmupBatchSize" : 1,
+    "measurementIterations" : 5,
+    "measurementTime" : "10 s",
+    "measurementBatchSize" : 1,
+    "primaryMetric" : {
+      "score" : 54095.9947953488,
+      "scoreError" : 1407.7090643517574,
+      "scoreConfidence" : [
+        52688.28573099704,
+        55503.70385970056
+      ],
+      "scorePercentiles" : {
+        "0.0" : 53566.69975523798,
+        "50.0" : 54180.18723360399,
+        "90.0" : 54538.944669859135,
+        "95.0" : 54538.944669859135,
+        "99.0" : 54538.944669859135,
+        "99.9" : 54538.944669859135,
+        "99.99" : 54538.944669859135,
+        "99.999" : 54538.944669859135,
+        "99.9999" : 54538.944669859135,
+        "100.0" : 54538.944669859135
+      },
+      "scoreUnit" : "ops/ms",
+      "rawData" : [
+        [
+          54180.18723360399,
+          54256.9763415576,
+          53937.16597648529,
+          53566.69975523798,
+          54538.944669859135
+        ]
+      ]
+    },
+    "secondaryMetrics" : {
+      "readReentrantLock" : {
+        "score" : 32427.969779699157,
+        "scoreError" : 6091.521259929126,
+        "scoreConfidence" : [
+          26336.44851977003,
+          38519.49103962828
+        ],
+        "scorePercentiles" : {
+          "0.0" : 30335.919404370215,
+          "50.0" : 32704.730340016507,
+          "90.0" : 33906.68593444759,
+          "95.0" : 33906.68593444759,
+          "99.0" : 33906.68593444759,
+          "99.9" : 33906.68593444759,
+          "99.99" : 33906.68593444759,
+          "99.999" : 33906.68593444759,
+          "99.9999" : 33906.68593444759,
+          "100.0" : 33906.68593444759
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            33906.68593444759,
+            33883.449978148536,
+            31309.06324151294,
+            30335.919404370215,
+            32704.730340016507
+          ]
+        ]
+      },
+      "writeReentrantLock" : {
+        "score" : 21668.02501564964,
+        "scoreError" : 5098.285828917791,
+        "scoreConfidence" : [
+          16569.73918673185,
+          26766.31084456743
+        ],
+        "scorePercentiles" : {
+          "0.0" : 20273.5012991564,
+          "50.0" : 21834.214329842627,
+          "90.0" : 23230.780350867768,
+          "95.0" : 23230.780350867768,
+          "99.0" : 23230.780350867768,
+          "99.9" : 23230.780350867768,
+          "99.99" : 23230.780350867768,
+          "99.999" : 23230.780350867768,
+          "99.9999" : 23230.780350867768,
+          "100.0" : 23230.780350867768
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            20273.5012991564,
+            20373.526363409066,
+            22628.102734972355,
+            23230.780350867768,
+            21834.214329842627
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "jmhVersion" : "1.35",
+    "benchmark" : "course.concurrency.m3_shared.benchmarks.CounterBenchmarks.ReentrantLock_fair",
+    "mode" : "thrpt",
+    "threads" : 8,
+    "forks" : 1,
+    "jvm" : "/Users/boiarshinov/Library/Java/JavaVirtualMachines/liberica-11.0.16/bin/java",
+    "jvmArgs" : [
+      "-javaagent:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=62989:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/bin",
+      "-Dfile.encoding=UTF-8"
+    ],
+    "jdkVersion" : "11.0.16",
+    "vmName" : "OpenJDK 64-Bit Server VM",
+    "vmVersion" : "11.0.16+8-LTS",
+    "warmupIterations" : 5,
+    "warmupTime" : "10 s",
+    "warmupBatchSize" : 1,
+    "measurementIterations" : 5,
+    "measurementTime" : "10 s",
+    "measurementBatchSize" : 1,
+    "primaryMetric" : {
+      "score" : 605.4947519731702,
+      "scoreError" : 7.147041222440488,
+      "scoreConfidence" : [
+        598.3477107507297,
+        612.6417931956107
+      ],
+      "scorePercentiles" : {
+        "0.0" : 603.4962806600765,
+        "50.0" : 605.0525529096288,
+        "90.0" : 608.4931297906064,
+        "95.0" : 608.4931297906064,
+        "99.0" : 608.4931297906064,
+        "99.9" : 608.4931297906064,
+        "99.99" : 608.4931297906064,
+        "99.999" : 608.4931297906064,
+        "99.9999" : 608.4931297906064,
+        "100.0" : 608.4931297906064
+      },
+      "scoreUnit" : "ops/ms",
+      "rawData" : [
+        [
+          605.0525529096288,
+          604.7443704135943,
+          603.4962806600765,
+          608.4931297906064,
+          605.6874260919451
+        ]
+      ]
+    },
+    "secondaryMetrics" : {
+      "readReentrantLockFair" : {
+        "score" : 529.807850348169,
+        "scoreError" : 6.2540552653951,
+        "scoreConfidence" : [
+          523.553795082774,
+          536.0619056135641
+        ],
+        "scorePercentiles" : {
+          "0.0" : 528.0590605391035,
+          "50.0" : 529.4208706223237,
+          "90.0" : 532.4315830543085,
+          "95.0" : 532.4315830543085,
+          "99.0" : 532.4315830543085,
+          "99.9" : 532.4315830543085,
+          "99.99" : 532.4315830543085,
+          "99.999" : 532.4315830543085,
+          "99.9999" : 532.4315830543085,
+          "100.0" : 532.4315830543085
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            529.4208706223237,
+            529.1512465494263,
+            528.0590605391035,
+            532.4315830543085,
+            529.976490975683
+          ]
+        ]
+      },
+      "writeReentrantLockFair" : {
+        "score" : 75.68690162500124,
+        "scoreError" : 0.8929859653798491,
+        "scoreConfidence" : [
+          74.79391565962139,
+          76.57988759038109
+        ],
+        "scorePercentiles" : {
+          "0.0" : 75.43722012097307,
+          "50.0" : 75.63168228730505,
+          "90.0" : 76.06154673629801,
+          "95.0" : 76.06154673629801,
+          "99.0" : 76.06154673629801,
+          "99.9" : 76.06154673629801,
+          "99.99" : 76.06154673629801,
+          "99.999" : 76.06154673629801,
+          "99.9999" : 76.06154673629801,
+          "100.0" : 76.06154673629801
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            75.63168228730505,
+            75.59312386416804,
+            75.43722012097307,
+            76.06154673629801,
+            75.71093511626206
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "jmhVersion" : "1.35",
+    "benchmark" : "course.concurrency.m3_shared.benchmarks.CounterBenchmarks.Semaphore",
+    "mode" : "thrpt",
+    "threads" : 8,
+    "forks" : 1,
+    "jvm" : "/Users/boiarshinov/Library/Java/JavaVirtualMachines/liberica-11.0.16/bin/java",
+    "jvmArgs" : [
+      "-javaagent:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=62989:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/bin",
+      "-Dfile.encoding=UTF-8"
+    ],
+    "jdkVersion" : "11.0.16",
+    "vmName" : "OpenJDK 64-Bit Server VM",
+    "vmVersion" : "11.0.16+8-LTS",
+    "warmupIterations" : 5,
+    "warmupTime" : "10 s",
+    "warmupBatchSize" : 1,
+    "measurementIterations" : 5,
+    "measurementTime" : "10 s",
+    "measurementBatchSize" : 1,
+    "primaryMetric" : {
+      "score" : 39687.936206469465,
+      "scoreError" : 3825.4455281240516,
+      "scoreConfidence" : [
+        35862.49067834541,
+        43513.38173459352
+      ],
+      "scorePercentiles" : {
+        "0.0" : 38446.485932363634,
+        "50.0" : 40310.17274318349,
+        "90.0" : 40583.823075968394,
+        "95.0" : 40583.823075968394,
+        "99.0" : 40583.823075968394,
+        "99.9" : 40583.823075968394,
+        "99.99" : 40583.823075968394,
+        "99.999" : 40583.823075968394,
+        "99.9999" : 40583.823075968394,
+        "100.0" : 40583.823075968394
+      },
+      "scoreUnit" : "ops/ms",
+      "rawData" : [
+        [
+          38446.485932363634,
+          38781.95540262253,
+          40317.2438782093,
+          40583.823075968394,
+          40310.17274318349
+        ]
+      ]
+    },
+    "secondaryMetrics" : {
+      "readSemaphore" : {
+        "score" : 34680.304570816086,
+        "scoreError" : 3330.224709608764,
+        "scoreConfidence" : [
+          31350.079861207323,
+          38010.52928042485
+        ],
+        "scorePercentiles" : {
+          "0.0" : 33532.817775695,
+          "50.0" : 35195.172315346186,
+          "90.0" : 35370.957858999995,
+          "95.0" : 35370.957858999995,
+          "99.0" : 35370.957858999995,
+          "99.9" : 35370.957858999995,
+          "99.99" : 35370.957858999995,
+          "99.999" : 35370.957858999995,
+          "99.9999" : 35370.957858999995,
+          "100.0" : 35370.957858999995
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            33532.817775695,
+            33968.882524834626,
+            35370.957858999995,
+            35333.69237920462,
+            35195.172315346186
+          ]
+        ]
+      },
+      "writeSemaphore" : {
+        "score" : 5007.631635653382,
+        "scoreError" : 669.1134621998742,
+        "scoreConfidence" : [
+          4338.518173453507,
+          5676.745097853256
+        ],
+        "scorePercentiles" : {
+          "0.0" : 4813.072877787906,
+          "50.0" : 4946.286019209301,
+          "90.0" : 5250.130696763772,
+          "95.0" : 5250.130696763772,
+          "99.0" : 5250.130696763772,
+          "99.9" : 5250.130696763772,
+          "99.99" : 5250.130696763772,
+          "99.999" : 5250.130696763772,
+          "99.9999" : 5250.130696763772,
+          "100.0" : 5250.130696763772
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            4913.668156668631,
+            4813.072877787906,
+            4946.286019209301,
+            5250.130696763772,
+            5115.0004278373
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "jmhVersion" : "1.35",
+    "benchmark" : "course.concurrency.m3_shared.benchmarks.CounterBenchmarks.Semaphore_fair",
+    "mode" : "thrpt",
+    "threads" : 8,
+    "forks" : 1,
+    "jvm" : "/Users/boiarshinov/Library/Java/JavaVirtualMachines/liberica-11.0.16/bin/java",
+    "jvmArgs" : [
+      "-javaagent:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=62989:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/bin",
+      "-Dfile.encoding=UTF-8"
+    ],
+    "jdkVersion" : "11.0.16",
+    "vmName" : "OpenJDK 64-Bit Server VM",
+    "vmVersion" : "11.0.16+8-LTS",
+    "warmupIterations" : 5,
+    "warmupTime" : "10 s",
+    "warmupBatchSize" : 1,
+    "measurementIterations" : 5,
+    "measurementTime" : "10 s",
+    "measurementBatchSize" : 1,
+    "primaryMetric" : {
+      "score" : 578.22992432902,
+      "scoreError" : 7.736751232822783,
+      "scoreConfidence" : [
+        570.4931730961972,
+        585.9666755618429
+      ],
+      "scorePercentiles" : {
+        "0.0" : 575.5758152805023,
+        "50.0" : 578.1135072704415,
+        "90.0" : 581.1473766022533,
+        "95.0" : 581.1473766022533,
+        "99.0" : 581.1473766022533,
+        "99.9" : 581.1473766022533,
+        "99.99" : 581.1473766022533,
+        "99.999" : 581.1473766022533,
+        "99.9999" : 581.1473766022533,
+        "100.0" : 581.1473766022533
+      },
+      "scoreUnit" : "ops/ms",
+      "rawData" : [
+        [
+          575.5758152805023,
+          577.6237672885777,
+          581.1473766022533,
+          578.1135072704415,
+          578.6891552033253
+        ]
+      ]
+    },
+    "secondaryMetrics" : {
+      "readSemaphoreFair" : {
+        "score" : 505.95112639337265,
+        "scoreError" : 6.769707536389174,
+        "scoreConfidence" : [
+          499.1814188569835,
+          512.7208339297619
+        ],
+        "scorePercentiles" : {
+          "0.0" : 503.6288383018489,
+          "50.0" : 505.8493308352422,
+          "90.0" : 508.504045194987,
+          "95.0" : 508.504045194987,
+          "99.0" : 508.504045194987,
+          "99.9" : 508.504045194987,
+          "99.99" : 508.504045194987,
+          "99.999" : 508.504045194987,
+          "99.9999" : 508.504045194987,
+          "100.0" : 508.504045194987
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            503.6288383018489,
+            505.4207773228994,
+            508.504045194987,
+            505.8493308352422,
+            506.35264031188564
+          ]
+        ]
+      },
+      "writeSemaphoreFair" : {
+        "score" : 72.27879793564743,
+        "scoreError" : 0.9670439786442098,
+        "scoreConfidence" : [
+          71.31175395700322,
+          73.24584191429165
+        ],
+        "scorePercentiles" : {
+          "0.0" : 71.94697697865347,
+          "50.0" : 72.2641764351993,
+          "90.0" : 72.64333140726634,
+          "95.0" : 72.64333140726634,
+          "99.0" : 72.64333140726634,
+          "99.9" : 72.64333140726634,
+          "99.99" : 72.64333140726634,
+          "99.999" : 72.64333140726634,
+          "99.9999" : 72.64333140726634,
+          "100.0" : 72.64333140726634
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            71.94697697865347,
+            72.20298996567838,
+            72.64333140726634,
+            72.2641764351993,
+            72.33651489143968
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "jmhVersion" : "1.35",
+    "benchmark" : "course.concurrency.m3_shared.benchmarks.CounterBenchmarks.StampedLock_optimistic",
+    "mode" : "thrpt",
+    "threads" : 8,
+    "forks" : 1,
+    "jvm" : "/Users/boiarshinov/Library/Java/JavaVirtualMachines/liberica-11.0.16/bin/java",
+    "jvmArgs" : [
+      "-javaagent:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=62989:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/bin",
+      "-Dfile.encoding=UTF-8"
+    ],
+    "jdkVersion" : "11.0.16",
+    "vmName" : "OpenJDK 64-Bit Server VM",
+    "vmVersion" : "11.0.16+8-LTS",
+    "warmupIterations" : 5,
+    "warmupTime" : "10 s",
+    "warmupBatchSize" : 1,
+    "measurementIterations" : 5,
+    "measurementTime" : "10 s",
+    "measurementBatchSize" : 1,
+    "primaryMetric" : {
+      "score" : 62160.281226134895,
+      "scoreError" : 36864.83826367191,
+      "scoreConfidence" : [
+        25295.442962462985,
+        99025.1194898068
+      ],
+      "scorePercentiles" : {
+        "0.0" : 47246.75957058745,
+        "50.0" : 64149.24567771065,
+        "90.0" : 70509.55765433569,
+        "95.0" : 70509.55765433569,
+        "99.0" : 70509.55765433569,
+        "99.9" : 70509.55765433569,
+        "99.99" : 70509.55765433569,
+        "99.999" : 70509.55765433569,
+        "99.9999" : 70509.55765433569,
+        "100.0" : 70509.55765433569
+      },
+      "scoreUnit" : "ops/ms",
+      "rawData" : [
+        [
+          47246.75957058745,
+          69928.58683815708,
+          58967.25638988364,
+          70509.55765433569,
+          64149.24567771065
+        ]
+      ]
+    },
+    "secondaryMetrics" : {
+      "readStampedLockOptimistic" : {
+        "score" : 57131.76593204681,
+        "scoreError" : 37026.84394790686,
+        "scoreConfidence" : [
+          20104.921984139946,
+          94158.60987995367
+        ],
+        "scorePercentiles" : {
+          "0.0" : 42154.08437403736,
+          "50.0" : 59148.130449231794,
+          "90.0" : 65508.509050596134,
+          "95.0" : 65508.509050596134,
+          "99.0" : 65508.509050596134,
+          "99.9" : 65508.509050596134,
+          "99.99" : 65508.509050596134,
+          "99.999" : 65508.509050596134,
+          "99.9999" : 65508.509050596134,
+          "100.0" : 65508.509050596134
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            42154.08437403736,
+            64936.549094655405,
+            53911.556691713326,
+            65508.509050596134,
+            59148.130449231794
+          ]
+        ]
+      },
+      "writeStampedLockOptimistic" : {
+        "score" : 5028.515294088096,
+        "scoreError" : 168.85061859728896,
+        "scoreConfidence" : [
+          4859.664675490807,
+          5197.365912685385
+        ],
+        "scorePercentiles" : {
+          "0.0" : 4992.037743501664,
+          "50.0" : 5001.115228478854,
+          "90.0" : 5092.675196550088,
+          "95.0" : 5092.675196550088,
+          "99.0" : 5092.675196550088,
+          "99.9" : 5092.675196550088,
+          "99.99" : 5092.675196550088,
+          "99.999" : 5092.675196550088,
+          "99.9999" : 5092.675196550088,
+          "100.0" : 5092.675196550088
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            5092.675196550088,
+            4992.037743501664,
+            5055.699698170311,
+            5001.048603739559,
+            5001.115228478854
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "jmhVersion" : "1.35",
+    "benchmark" : "course.concurrency.m3_shared.benchmarks.CounterBenchmarks.StampedLock_readwrite",
+    "mode" : "thrpt",
+    "threads" : 8,
+    "forks" : 1,
+    "jvm" : "/Users/boiarshinov/Library/Java/JavaVirtualMachines/liberica-11.0.16/bin/java",
+    "jvmArgs" : [
+      "-javaagent:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=62989:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/bin",
+      "-Dfile.encoding=UTF-8"
+    ],
+    "jdkVersion" : "11.0.16",
+    "vmName" : "OpenJDK 64-Bit Server VM",
+    "vmVersion" : "11.0.16+8-LTS",
+    "warmupIterations" : 5,
+    "warmupTime" : "10 s",
+    "warmupBatchSize" : 1,
+    "measurementIterations" : 5,
+    "measurementTime" : "10 s",
+    "measurementBatchSize" : 1,
+    "primaryMetric" : {
+      "score" : 16539.307128051983,
+      "scoreError" : 6707.486062349279,
+      "scoreConfidence" : [
+        9831.821065702705,
+        23246.793190401262
+      ],
+      "scorePercentiles" : {
+        "0.0" : 15130.417032620338,
+        "50.0" : 15521.777022024078,
+        "90.0" : 19203.988018299657,
+        "95.0" : 19203.988018299657,
+        "99.0" : 19203.988018299657,
+        "99.9" : 19203.988018299657,
+        "99.99" : 19203.988018299657,
+        "99.999" : 19203.988018299657,
+        "99.9999" : 19203.988018299657,
+        "100.0" : 19203.988018299657
+      },
+      "scoreUnit" : "ops/ms",
+      "rawData" : [
+        [
+          19203.988018299657,
+          17417.120634846488,
+          15521.777022024078,
+          15130.417032620338,
+          15423.232932469346
+        ]
+      ]
+    },
+    "secondaryMetrics" : {
+      "readStampedLockRW" : {
+        "score" : 402.90959542380534,
+        "scoreError" : 307.9218850013988,
+        "scoreConfidence" : [
+          94.98771042240656,
+          710.8314804252041
+        ],
+        "scorePercentiles" : {
+          "0.0" : 330.79486369627756,
+          "50.0" : 375.6032621721789,
+          "90.0" : 516.1123193445853,
+          "95.0" : 516.1123193445853,
+          "99.0" : 516.1123193445853,
+          "99.9" : 516.1123193445853,
+          "99.99" : 516.1123193445853,
+          "99.999" : 516.1123193445853,
+          "99.9999" : 516.1123193445853,
+          "100.0" : 516.1123193445853
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            516.1123193445853,
+            453.9949043220404,
+            330.79486369627756,
+            338.04262758394435,
+            375.6032621721789
+          ]
+        ]
+      },
+      "writeStampedLockRW" : {
+        "score" : 16136.397532628174,
+        "scoreError" : 6408.501242334441,
+        "scoreConfidence" : [
+          9727.896290293735,
+          22544.898774962614
+        ],
+        "scorePercentiles" : {
+          "0.0" : 14792.374405036395,
+          "50.0" : 15190.9821583278,
+          "90.0" : 18687.87569895507,
+          "95.0" : 18687.87569895507,
+          "99.0" : 18687.87569895507,
+          "99.9" : 18687.87569895507,
+          "99.99" : 18687.87569895507,
+          "99.999" : 18687.87569895507,
+          "99.9999" : 18687.87569895507,
+          "100.0" : 18687.87569895507
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            18687.87569895507,
+            16963.125730524443,
+            15190.9821583278,
+            14792.374405036395,
+            15047.629670297167
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "jmhVersion" : "1.35",
+    "benchmark" : "course.concurrency.m3_shared.benchmarks.CounterBenchmarks.synchronized",
+    "mode" : "thrpt",
+    "threads" : 8,
+    "forks" : 1,
+    "jvm" : "/Users/boiarshinov/Library/Java/JavaVirtualMachines/liberica-11.0.16/bin/java",
+    "jvmArgs" : [
+      "-javaagent:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=62989:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/bin",
+      "-Dfile.encoding=UTF-8"
+    ],
+    "jdkVersion" : "11.0.16",
+    "vmName" : "OpenJDK 64-Bit Server VM",
+    "vmVersion" : "11.0.16+8-LTS",
+    "warmupIterations" : 5,
+    "warmupTime" : "10 s",
+    "warmupBatchSize" : 1,
+    "measurementIterations" : 5,
+    "measurementTime" : "10 s",
+    "measurementBatchSize" : 1,
+    "primaryMetric" : {
+      "score" : 9419.680076385015,
+      "scoreError" : 25.405604756756315,
+      "scoreConfidence" : [
+        9394.27447162826,
+        9445.08568114177
+      ],
+      "scorePercentiles" : {
+        "0.0" : 9410.079894768354,
+        "50.0" : 9420.384312360558,
+        "90.0" : 9427.556193968241,
+        "95.0" : 9427.556193968241,
+        "99.0" : 9427.556193968241,
+        "99.9" : 9427.556193968241,
+        "99.99" : 9427.556193968241,
+        "99.999" : 9427.556193968241,
+        "99.9999" : 9427.556193968241,
+        "100.0" : 9427.556193968241
+      },
+      "scoreUnit" : "ops/ms",
+      "rawData" : [
+        [
+          9427.556193968241,
+          9417.115190466478,
+          9410.079894768354,
+          9420.384312360558,
+          9423.26479036145
+        ]
+      ]
+    },
+    "secondaryMetrics" : {
+      "readSynchronized" : {
+        "score" : 8783.295945788286,
+        "scoreError" : 26.266332719502273,
+        "scoreConfidence" : [
+          8757.029613068784,
+          8809.562278507789
+        ],
+        "scorePercentiles" : {
+          "0.0" : 8773.006817969075,
+          "50.0" : 8783.150795846746,
+          "90.0" : 8789.886643784545,
+          "95.0" : 8789.886643784545,
+          "99.0" : 8789.886643784545,
+          "99.9" : 8789.886643784545,
+          "99.99" : 8789.886643784545,
+          "99.999" : 8789.886643784545,
+          "99.9999" : 8789.886643784545,
+          "100.0" : 8789.886643784545
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            8789.052350718739,
+            8781.383120622333,
+            8773.006817969075,
+            8783.150795846746,
+            8789.886643784545
+          ]
+        ]
+      },
+      "writeSynchronized" : {
+        "score" : 636.3841305967284,
+        "scoreError" : 7.494031811574427,
+        "scoreConfidence" : [
+          628.8900987851539,
+          643.8781624083028
+        ],
+        "scorePercentiles" : {
+          "0.0" : 633.3781465769057,
+          "50.0" : 637.0730767992784,
+          "90.0" : 638.5038432495012,
+          "95.0" : 638.5038432495012,
+          "99.0" : 638.5038432495012,
+          "99.9" : 638.5038432495012,
+          "99.99" : 638.5038432495012,
+          "99.999" : 638.5038432495012,
+          "99.9999" : 638.5038432495012,
+          "100.0" : 638.5038432495012
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            638.5038432495012,
+            635.7320698441445,
+            637.0730767992784,
+            637.2335165138121,
+            633.3781465769057
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "jmhVersion" : "1.35",
+    "benchmark" : "course.concurrency.m3_shared.benchmarks.CounterBenchmarks.volatile",
+    "mode" : "thrpt",
+    "threads" : 8,
+    "forks" : 1,
+    "jvm" : "/Users/boiarshinov/Library/Java/JavaVirtualMachines/liberica-11.0.16/bin/java",
+    "jvmArgs" : [
+      "-javaagent:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=62989:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/bin",
+      "-Dfile.encoding=UTF-8"
+    ],
+    "jdkVersion" : "11.0.16",
+    "vmName" : "OpenJDK 64-Bit Server VM",
+    "vmVersion" : "11.0.16+8-LTS",
+    "warmupIterations" : 5,
+    "warmupTime" : "10 s",
+    "warmupBatchSize" : 1,
+    "measurementIterations" : 5,
+    "measurementTime" : "10 s",
+    "measurementBatchSize" : 1,
+    "primaryMetric" : {
+      "score" : 912160.7272332732,
+      "scoreError" : 11473.856871849994,
+      "scoreConfidence" : [
+        900686.8703614232,
+        923634.5841051232
+      ],
+      "scorePercentiles" : {
+        "0.0" : 909615.6786001904,
+        "50.0" : 912020.1628828432,
+        "90.0" : 916945.689752468,
+        "95.0" : 916945.689752468,
+        "99.0" : 916945.689752468,
+        "99.9" : 916945.689752468,
+        "99.99" : 916945.689752468,
+        "99.999" : 916945.689752468,
+        "99.9999" : 916945.689752468,
+        "100.0" : 916945.689752468
+      },
+      "scoreUnit" : "ops/ms",
+      "rawData" : [
+        [
+          912510.7834455293,
+          912020.1628828432,
+          909711.3214853352,
+          916945.689752468,
+          909615.6786001904
+        ]
+      ]
+    },
+    "secondaryMetrics" : {
+      "readVolatile" : {
+        "score" : 904872.3409530998,
+        "scoreError" : 11412.243851466032,
+        "scoreConfidence" : [
+          893460.0971016338,
+          916284.5848045658
+        ],
+        "scorePercentiles" : {
+          "0.0" : 902379.2572244615,
+          "50.0" : 904765.1502138743,
+          "90.0" : 909646.5624260545,
+          "95.0" : 909646.5624260545,
+          "99.0" : 909646.5624260545,
+          "99.9" : 909646.5624260545,
+          "99.99" : 909646.5624260545,
+          "99.999" : 909646.5624260545,
+          "99.9999" : 909646.5624260545,
+          "100.0" : 909646.5624260545
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            905154.939981656,
+            904765.1502138743,
+            902379.2572244615,
+            909646.5624260545,
+            902415.7949194519
+          ]
+        ]
+      },
+      "writeVolatile" : {
+        "score" : 7288.386280173569,
+        "scoreError" : 239.85614154813564,
+        "scoreConfidence" : [
+          7048.530138625433,
+          7528.242421721704
+        ],
+        "scorePercentiles" : {
+          "0.0" : 7199.88368073854,
+          "50.0" : 7299.1273264132915,
+          "90.0" : 7355.843463873407,
+          "95.0" : 7355.843463873407,
+          "99.0" : 7355.843463873407,
+          "99.9" : 7355.843463873407,
+          "99.99" : 7355.843463873407,
+          "99.999" : 7355.843463873407,
+          "99.9999" : 7355.843463873407,
+          "100.0" : 7355.843463873407
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            7355.843463873407,
+            7255.012668968803,
+            7332.064260873798,
+            7299.1273264132915,
+            7199.88368073854
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "jmhVersion" : "1.35",
+    "benchmark" : "course.concurrency.m3_shared.benchmarks.CounterBenchmarks.volatile_synchronized",
+    "mode" : "thrpt",
+    "threads" : 8,
+    "forks" : 1,
+    "jvm" : "/Users/boiarshinov/Library/Java/JavaVirtualMachines/liberica-11.0.16/bin/java",
+    "jvmArgs" : [
+      "-javaagent:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=62989:/Users/boiarshinov/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/223.8617.56/IntelliJ IDEA.app/Contents/bin",
+      "-Dfile.encoding=UTF-8"
+    ],
+    "jdkVersion" : "11.0.16",
+    "vmName" : "OpenJDK 64-Bit Server VM",
+    "vmVersion" : "11.0.16+8-LTS",
+    "warmupIterations" : 5,
+    "warmupTime" : "10 s",
+    "warmupBatchSize" : 1,
+    "measurementIterations" : 5,
+    "measurementTime" : "10 s",
+    "measurementBatchSize" : 1,
+    "primaryMetric" : {
+      "score" : 938081.1017924302,
+      "scoreError" : 18381.521459455078,
+      "scoreConfidence" : [
+        919699.5803329751,
+        956462.6232518852
+      ],
+      "scorePercentiles" : {
+        "0.0" : 929898.6918453227,
+        "50.0" : 939660.1341110012,
+        "90.0" : 942194.4392139053,
+        "95.0" : 942194.4392139053,
+        "99.0" : 942194.4392139053,
+        "99.9" : 942194.4392139053,
+        "99.99" : 942194.4392139053,
+        "99.999" : 942194.4392139053,
+        "99.9999" : 942194.4392139053,
+        "100.0" : 942194.4392139053
+      },
+      "scoreUnit" : "ops/ms",
+      "rawData" : [
+        [
+          929898.6918453227,
+          942194.4392139053,
+          940244.0070119381,
+          938408.2367799834,
+          939660.1341110012
+        ]
+      ]
+    },
+    "secondaryMetrics" : {
+      "readSynchronizedVolatile" : {
+        "score" : 923541.9121221497,
+        "scoreError" : 18188.83224712861,
+        "scoreConfidence" : [
+          905353.0798750211,
+          941730.7443692783
+        ],
+        "scorePercentiles" : {
+          "0.0" : 915382.6500919755,
+          "50.0" : 925186.4299735877,
+          "90.0" : 927420.9324572999,
+          "95.0" : 927420.9324572999,
+          "99.0" : 927420.9324572999,
+          "99.9" : 927420.9324572999,
+          "99.99" : 927420.9324572999,
+          "99.999" : 927420.9324572999,
+          "99.9999" : 927420.9324572999,
+          "100.0" : 927420.9324572999
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            915382.6500919755,
+            927420.9324572999,
+            925711.4171467689,
+            924008.1309411174,
+            925186.4299735877
+          ]
+        ]
+      },
+      "writeSynchronizedVolatile" : {
+        "score" : 14539.189670280297,
+        "scoreError" : 541.5480909610135,
+        "scoreConfidence" : [
+          13997.641579319283,
+          15080.737761241311
+        ],
+        "scorePercentiles" : {
+          "0.0" : 14400.105838866126,
+          "50.0" : 14516.041753347343,
+          "90.0" : 14773.506756605351,
+          "95.0" : 14773.506756605351,
+          "99.0" : 14773.506756605351,
+          "99.9" : 14773.506756605351,
+          "99.99" : 14773.506756605351,
+          "99.999" : 14773.506756605351,
+          "99.9999" : 14773.506756605351,
+          "100.0" : 14773.506756605351
+        },
+        "scoreUnit" : "ops/ms",
+        "rawData" : [
+          [
+            14516.041753347343,
+            14773.506756605351,
+            14532.589865169284,
+            14400.105838866126,
+            14473.70413741338
+          ]
+        ]
+      }
+    }
+  }
+]
+
+
