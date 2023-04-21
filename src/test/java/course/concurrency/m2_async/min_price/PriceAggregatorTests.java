@@ -178,4 +178,38 @@ public class PriceAggregatorTests {
 
         assertEquals(expectedMin, min);
     }
+
+    @Test
+    @DisplayName("Half of shops respond too long")
+    public void shouldTolerateLongResponses(){
+        int shopCount = 50;
+        int half = shopCount/2;
+        PriceRetriever priceRetriever = mock(PriceRetriever.class);
+        List<Double> prices = IntStream.range(0, half).boxed()
+                .map(i -> ThreadLocalRandom.current().nextDouble()*100).collect(toList());
+
+        AtomicInteger totalRequestCount = new AtomicInteger();
+        AtomicInteger succeedRequestCount = new AtomicInteger();
+
+        when(priceRetriever.getPrice(anyLong(), anyLong())).thenAnswer(inv -> {
+            if (totalRequestCount.getAndIncrement() < half) {
+                Thread.sleep(SLA * 2);
+                return null;
+            } else {
+                return prices.get(succeedRequestCount.getAndIncrement());
+            }
+        });
+
+        priceAggregator.setPriceRetriever(priceRetriever);
+        Set<Long> shops = LongStream.range(0, shopCount).boxed().collect(toSet());
+        priceAggregator.setShops(shops);
+
+        long start = System.currentTimeMillis();
+        double min = priceAggregator.getMinPrice(randomItemId);
+        long end = System.currentTimeMillis();
+
+        double expectedMin = prices.stream().min(Double::compareTo).orElse(Double.NaN);
+        assertEquals(expectedMin, min, "Minimal price is evaluated incorrectly");
+        assertTrue((end - start) < SLA, "Method evaluated too long");
+    }
 }
