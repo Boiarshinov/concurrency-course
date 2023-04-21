@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 public class PriceAggregator {
 
     private static final long SHOP_REQUEST_TIMEOUT = 2950L; //Should be a bit less than 3s to pass tests
-    public static final int MAXIMUM_SHOP_COUNT = 50;
 
     private PriceRetriever priceRetriever = new PriceRetriever();
 
@@ -16,16 +15,9 @@ public class PriceAggregator {
     }
 
     private Collection<Long> shopIds = Set.of(10L, 45L, 66L, 345L, 234L, 333L, 67L, 123L, 768L);
-    private final ExecutorService threadPool =
-            new ThreadPoolExecutor(0, MAXIMUM_SHOP_COUNT,
-            5, TimeUnit.SECONDS,
-            new SynchronousQueue<>());
+    private final ExecutorService threadPool = Executors.newCachedThreadPool();
 
     public void setShops(Collection<Long> shopIds) {
-        if (shopIds.size() > MAXIMUM_SHOP_COUNT) {
-            throw new IllegalArgumentException("Too much shops. Maximum is: " + MAXIMUM_SHOP_COUNT +
-                    ". Try to process with batches");
-        }
         this.shopIds = shopIds;
     }
 
