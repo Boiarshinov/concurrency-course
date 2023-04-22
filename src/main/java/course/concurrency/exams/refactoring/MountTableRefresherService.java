@@ -83,18 +83,21 @@ public class MountTableRefresherService {
                 })
                 .collect(Collectors.toList());
 
-        CompletableFuture.allOf(refreshingTasks.toArray(new CompletableFuture[0])).thenAccept(_void -> {
-                    List<Result> results = refreshingTasks.stream()
-                            .map(CompletableFuture::join)
-                            .collect(Collectors.toList());
-                    removeOutdatedFromCache(results);
-                    logResults(results);
-                })
-                .exceptionally(ex -> {
-                    log("Mount table cache refresher was interrupted.");
-                    return null;
-                })
-                .join();
+        try {
+            CompletableFuture.allOf(refreshingTasks.toArray(new CompletableFuture[0])).thenAccept(_void -> {
+                        List<Result> results = refreshingTasks.stream()
+                                .map(CompletableFuture::join)
+                                .collect(Collectors.toList());
+                        removeOutdatedFromCache(results);
+                        logResults(results);
+                    })
+                    .get();
+        } catch (InterruptedException e) {
+            log("Mount table cache refresher was interrupted.");
+            executor.shutdownNow();
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private List<String> getAddresses() {

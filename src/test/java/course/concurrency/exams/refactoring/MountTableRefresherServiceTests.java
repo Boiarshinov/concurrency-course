@@ -122,6 +122,30 @@ public class MountTableRefresherServiceTests {
         verify(routerClientsCache, times(1)).invalidate(anyString());
     }
 
+    @Test
+    @DisplayName("Log on refreshing interrupted")
+    public void interruptRefreshing() throws InterruptedException {
+        prepareInitialState();
+        when(manager.refresh()).thenAnswer(invocation -> {
+            try {
+                Thread.sleep(500);
+                return true;
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        Thread thread = new Thread(() -> service.refresh());
+        thread.start();
+        Thread.sleep(100);
+        thread.interrupt();
+
+        Thread.sleep(2000);
+
+        verify(service).log("Mount table cache refresher was interrupted.");
+        verify(service).log("Mount table entries cache refresh successCount=0,failureCount=4");
+    }
+
     private void prepareInitialState() {
         List<Others.RouterState> states = Stream.of("123", "local6", "789", "local")
                 .map(a -> new Others.RouterState(a))
